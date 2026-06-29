@@ -31,13 +31,13 @@ const locais = [
     },
 
     {
-        id: 4,
-        tipo: "destino",
-        nome: "Porto Jofre",
-        km: 145,
-        lat: -16.495,
-        lng: -56.995,
-        descricao: "Principal destino para observação de onças."
+    id: 4,
+    tipo: "destino",
+    nome: "Porto Jofre",
+    km: 145,
+    lat: -16.3106,
+    lng: -56.7417,
+    descricao: "Principal destino para observação de onças."
     }
 
 ];
