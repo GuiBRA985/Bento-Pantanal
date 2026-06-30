@@ -39,7 +39,7 @@ const icones = {
     })
 
 };
-
+const marcadores = [];
 locais.forEach(local=>{
 
     const marker = L.marker(
@@ -48,6 +48,10 @@ locais.forEach(local=>{
         icon: icones[local.tipo]
     }
 ).addTo(map);
+    marcadores.push({
+    tipo: local.tipo,
+    marker: marker
+});
 
     marker.on("click",()=>{
 
@@ -89,5 +93,67 @@ locais.forEach(local=>{
         panel.classList.add("show");
 
     });
+
+});
+const marcadores = [];
+
+locais.forEach(local => {
+
+    const marker = L.marker(
+        [local.lat, local.lng],
+        {
+            icon: icones[local.tipo]
+        }
+    ).addTo(map);
+
+    marcadores.push({
+        tipo: local.tipo,
+        marker: marker
+    });
+
+    marker.on("click", () => {
+
+        content.innerHTML = `
+            <h2>${local.nome}</h2>
+            <p><strong>Km ${local.km}</strong></p>
+            <p>${local.descricao}</p>
+        `;
+
+        panel.classList.add("show");
+
+    });
+
+});
+
+document.querySelectorAll(".bottom-menu button")
+.forEach(botao => {
+
+    botao.onclick = () => {
+
+        const tipo = botao.dataset.tipo;
+
+        marcadores.forEach(item => {
+
+            if(tipo === "todos"){
+
+                map.addLayer(item.marker);
+
+            }else{
+
+                if(item.tipo === tipo){
+
+                    map.addLayer(item.marker);
+
+                }else{
+
+                    map.removeLayer(item.marker);
+
+                }
+
+            }
+
+        });
+
+    };
 
 });
