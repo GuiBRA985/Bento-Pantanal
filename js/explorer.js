@@ -3,57 +3,76 @@ const map = L.map("map").setView([-16.56, -56.71], 9);
 L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
-        maxZoom:19,
-        attribution:"© OpenStreetMap"
+        maxZoom: 19,
+        attribution: "© OpenStreetMap"
     }
 ).addTo(map);
 
-const panel=document.getElementById("info-panel");
+// Painel lateral
+const panel = document.getElementById("info-panel");
+const content = document.getElementById("panel-content");
 
-const content=document.getElementById("panel-content");
-
-document.getElementById("close-panel").onclick=()=>{
+document.getElementById("close-panel").onclick = () => {
     panel.classList.remove("show");
 };
+
+// Ícones
 const icones = {
 
     cidade: L.icon({
         iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png",
         shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-        iconSize: [25,41],
-        iconAnchor: [12,41]
+        iconSize: [25, 41],
+        iconAnchor: [12, 41]
     }),
 
     hotel: L.icon({
         iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
         shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-        iconSize: [25,41],
-        iconAnchor: [12,41]
+        iconSize: [25, 41],
+        iconAnchor: [12, 41]
     }),
 
     destino: L.icon({
         iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
         shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-        iconSize: [25,41],
-        iconAnchor: [12,41]
+        iconSize: [25, 41],
+        iconAnchor: [12, 41]
     })
 
 };
 
+// Lista de marcadores
+const marcadores = [];
 
-    marker.on("click",()=>{
+// Cria todos os marcadores
+locais.forEach(local => {
+
+    const marker = L.marker(
+        [local.lat, local.lng],
+        {
+            icon: icones[local.tipo]
+        }
+    ).addTo(map);
+
+    marcadores.push({
+        tipo: local.tipo,
+        marker: marker
+    });
+
+    marker.on("click", () => {
 
         content.innerHTML = `
 
 <img
-    src="${local.foto || 'https://placehold.co/800x450'}"
-    style="
-        width:100%;
-        height:220px;
-        object-fit:cover;
-        border-radius:12px;
-        margin-bottom:20px;
-    ">
+src="${local.foto || 'https://placehold.co/800x450'}"
+style="
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:20px;
+">
 
 <h2>${local.nome}</h2>
 
@@ -76,6 +95,7 @@ const icones = {
 </button>
 
 </div>
+
 `;
 
         panel.classList.add("show");
@@ -83,54 +103,25 @@ const icones = {
     });
 
 });
-const marcadores = [];
 
-locais.forEach(local => {
+// Filtros inferiores
+document.querySelectorAll(".bottom-menu button").forEach(botao => {
 
-    const marker = L.marker(
-        [local.lat, local.lng],
-        {
-            icon: icones[local.tipo]
-        }
-    ).addTo(map);
-
-    marcadores.push({
-        tipo: local.tipo,
-        marker: marker
-    });
-
-    marker.on("click", () => {
-
-        content.innerHTML = `
-            <h2>${local.nome}</h2>
-            <p><strong>Km ${local.km}</strong></p>
-            <p>${local.descricao}</p>
-        `;
-
-        panel.classList.add("show");
-
-    });
-
-});
-
-document.querySelectorAll(".bottom-menu button")
-.forEach(botao => {
-
-    botao.onclick = () => {
+    botao.addEventListener("click", () => {
 
         const tipo = botao.dataset.tipo;
 
         marcadores.forEach(item => {
 
-            if (tipo === "todos") {
+            if (tipo === "todos" || item.tipo === tipo) {
 
-                map.addLayer(item.marker);
+                if (!map.hasLayer(item.marker)) {
+                    item.marker.addTo(map);
+                }
 
             } else {
 
-                if (item.tipo === tipo) {
-                    map.addLayer(item.marker);
-                } else {
+                if (map.hasLayer(item.marker)) {
                     map.removeLayer(item.marker);
                 }
 
@@ -138,6 +129,6 @@ document.querySelectorAll(".bottom-menu button")
 
         });
 
-    };
+    });
 
 });
