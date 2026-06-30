@@ -132,3 +132,21 @@ document.querySelectorAll(".bottom-menu button").forEach(botao => {
     });
 
 });
+
+function adicionarRoteiro(id){
+
+    if(roteiro.includes(id)){
+
+        alert("Essa parada já foi adicionada.");
+
+        return;
+
+    }
+
+    roteiro.push(id);
+
+    document.getElementById("roteiro-count").textContent=roteiro.length;
+
+    alert("Parada adicionada ao roteiro!");
+
+}
