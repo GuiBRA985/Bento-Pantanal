@@ -162,3 +162,29 @@ color:#173A2B;
 line-height:1.6;
 
 }
+
+#panel-content button{
+
+padding:12px 18px;
+
+border:none;
+
+border-radius:8px;
+
+background:#173A2B;
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+#panel-content button:hover{
+
+transform:scale(1.05);
+
+}
