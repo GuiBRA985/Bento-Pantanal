@@ -42,7 +42,12 @@ const icones = {
 
 locais.forEach(local=>{
 
-    const marker=L.marker([local.lat,local.lng]).addTo(map);
+    const marker = L.marker(
+    [local.lat, local.lng],
+    {
+        icon: icones[local.tipo]
+    }
+).addTo(map);
 
     marker.on("click",()=>{
 
