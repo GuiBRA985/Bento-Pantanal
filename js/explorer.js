@@ -51,19 +51,40 @@ locais.forEach(local=>{
 
     marker.on("click",()=>{
 
-        content.innerHTML=`
-            <h2>${local.nome}</h2>
+        content.innerHTML = `
 
-            <p><strong>Km:</strong> ${local.km}</p>
+<img
+    src="${local.foto || 'https://placehold.co/800x450'}"
+    style="
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:12px;
+        margin-bottom:20px;
+    ">
 
-            <p>${local.descricao}</p>
+<h2>${local.nome}</h2>
 
-            <br>
+<p><strong>Km ${local.km}</strong></p>
 
-            <button style="padding:12px 18px;border:none;background:#173A2B;color:white;border-radius:8px;">
-                Como chegar
-            </button>
-        `;
+<p>${local.descricao}</p>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:25px;">
+
+<a href="${local.site || '#'}" target="_blank">
+<button>🌐 Site</button>
+</a>
+
+<a href="https://wa.me/${local.whatsapp || ''}" target="_blank">
+<button>📱 WhatsApp</button>
+</a>
+
+<button onclick="window.open('https://www.google.com/maps?q=${local.lat},${local.lng}')">
+🧭 Navegar
+</button>
+
+</div>
+`;
 
         panel.classList.add("show");
 
