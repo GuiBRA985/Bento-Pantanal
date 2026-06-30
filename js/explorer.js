@@ -90,8 +90,8 @@ margin-bottom:20px;
 <button>📱 WhatsApp</button>
 </a>
 
-<button onclick="window.open('https://www.google.com/maps?q=${local.lat},${local.lng}')">
-🧭 Navegar
+<button onclick="adicionarRoteiro('${local.id}')">
+➕ Adicionar ao roteiro
 </button>
 
 </div>
