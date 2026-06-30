@@ -39,19 +39,7 @@ const icones = {
     })
 
 };
-const marcadores = [];
-locais.forEach(local=>{
 
-    const marker = L.marker(
-    [local.lat, local.lng],
-    {
-        icon: icones[local.tipo]
-    }
-).addTo(map);
-    marcadores.push({
-    tipo: local.tipo,
-    marker: marker
-});
 
     marker.on("click",()=>{
 
