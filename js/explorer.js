@@ -122,20 +122,16 @@ document.querySelectorAll(".bottom-menu button")
 
         marcadores.forEach(item => {
 
-            if(tipo === "todos"){
+            if (tipo === "todos") {
 
                 map.addLayer(item.marker);
 
-            }else{
+            } else {
 
-                if(item.tipo === tipo){
-
+                if (item.tipo === tipo) {
                     map.addLayer(item.marker);
-
-                }else{
-
+                } else {
                     map.removeLayer(item.marker);
-
                 }
 
             }
