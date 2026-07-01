@@ -5,8 +5,8 @@ const destinos = [
         tipo: "destino",
         nome: "Porto Jofre",
         km: 145,
-        lat: -17.3646,
-        lng: -56.7749,
+        lat: -17.36460,
+        lng: -56.77490,
 
         foto: "img/destinos/porto-jofre.jpg",
         site: "https://www.google.com/search?q=Porto+Jofre+Pantanal",
