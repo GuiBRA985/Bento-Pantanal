@@ -49,6 +49,17 @@ const roteiro = [];
 
 const marcadores = [];
 
+const locais = [
+
+    ...cidades,
+
+    ...pousadas,
+
+    ...destinos,
+
+    ...pontes
+
+];
 
 // ---------- ÍCONES ----------
 
