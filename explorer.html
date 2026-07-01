@@ -1,117 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Bento Pantanal | Expedição Jaguar</title>
+  <title>Pantanal Explorer | Bento Pantanal</title>
 
-  <link rel="stylesheet" href="css/style.css" />
-  <meta name="theme-color" content="#173A2B" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="css/explorer.css">
 </head>
 
 <body>
 
-<header class="hero">
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="assets/videos/capa.mp4" type="video/mp4" />
-  </video>
-
-  <div class="overlay"></div>
-
-  <nav class="navbar">
-    <div class="logo">Bento Pantanal</div>
-    <a href="explorer.html" class="nav-link">Explorer</a>
-  </nav>
-
-  <div class="hero-content">
-    <span class="tagline">Expedição Jaguar</span>
-
-    <h1>Veja a onça-pintada no Pantanal</h1>
-
-    <p>
-      Uma expedição de 10 dias pela Transpantaneira, saindo de Cuiabá,
-      passando por Araras e Rio Claro, até chegar a Porto Jofre.
-    </p>
-
-    <div class="buttons">
-      <a href="#pacote" class="btn btn-primary">Quero ver a Expedição</a>
-      <a href="explorer.html" class="btn btn-secondary">Abrir Explorer</a>
-    </div>
-  </div>
+<header class="topbar">
+  <div class="logo">🐆 Pantanal Explorer</div>
+  <a href="index.html" class="home-link">Bento Pantanal</a>
 </header>
 
-<section id="pacote" class="section dark">
-  <span class="tagline">Pacote promocional</span>
+<div id="map"></div>
 
-  <h2>🐆 Porto Jofre — Veja a Onça-Pintada</h2>
+<div id="info-panel">
+  <button id="close-panel">✕</button>
 
-  <p>
-    O pacote inicial da Bento Pantanal foi pensado para quem quer viver
-    o melhor da Transpantaneira e chegar ao principal destino de observação
-    de onças-pintadas do Pantanal Norte.
-  </p>
-
-  <div class="price-box">
-    <strong>US$ 10.000</strong>
-    <span>10 dias de expedição</span>
+  <div id="panel-content">
+    <h2>Pantanal Explorer</h2>
+    <p>Explore a Transpantaneira até Porto Jofre.</p>
   </div>
+</div>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Araras</h3>
-      <p>2 noites para começar a experiência com fauna, aves e ecoturismo.</p>
-    </div>
+<div id="roteiro-panel">
+  <button id="close-roteiro">✕</button>
 
-    <div class="card">
-      <h3>Rio Claro</h3>
-      <p>3 noites em uma região clássica da Transpantaneira, com rio e vida selvagem.</p>
-    </div>
-
-    <div class="card">
-      <h3>Porto Jofre</h3>
-      <p>3 noites no destino final da Expedição Jaguar, em busca da onça-pintada.</p>
-    </div>
+  <div id="roteiro-content">
+    <h2>📋 Minha Expedição</h2>
+    <p>Nenhuma parada adicionada.</p>
   </div>
+</div>
 
-  <p class="note">
-    Os 2 dias restantes são reservados para chegada, deslocamentos e retorno ao aeroporto de Cuiabá.
-  </p>
+<button id="roteiro-btn">
+  📋 Minha Expedição
+  <span id="roteiro-count">0</span>
+</button>
 
-  <div class="section-buttons">
-    <a href="explorer.html" class="btn btn-secondary">Explorar o roteiro</a>
+<nav class="bottom-menu">
+  <button data-tipo="todos">🌎</button>
+  <button data-tipo="hotel">🏨</button>
+  <button data-tipo="cidade">🏙️</button>
+  <button data-tipo="destino">🐆</button>
+</nav>
 
-    <a
-      href="https://wa.me/5565999999999?text=Olá!%20Quero%20reservar%20uma%20data%20para%20a%20Expedição%20Jaguar%20-%20Porto%20Jofre.%20Pacote%20de%2010%20dias."
-      class="btn btn-primary"
-      target="_blank"
-    >
-      🐆 Save the date
-    </a>
-  </div>
-</section>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<section class="section">
-  <span class="tagline">Pantanal Explorer</span>
+<script src="js/data/cidades.js"></script>
+<script src="js/data/pousadas.js"></script>
+<script src="js/data/destinos.js"></script>
+<script src="js/data/pontes.js"></script>
 
-  <h2>Explore gratuitamente a Transpantaneira</h2>
-
-  <p>
-    O Explorer é aberto para qualquer pessoa conhecer a estrada, as pousadas
-    e o caminho até Porto Jofre. Mesmo quem já está no Pantanal pode usar como
-    guia de consulta.
-  </p>
-
-  <div class="section-buttons">
-    <a href="explorer.html" class="btn btn-primary">Abrir Pantanal Explorer</a>
-  </div>
-</section>
-
-<footer class="footer">
-  <p>Bento Pantanal — O Pantanal não se visita. O Pantanal se vive.</p>
-</footer>
-
-<script src="js/app.js"></script>
+<script src="js/explorer.js"></script>
 
 </body>
 </html>
