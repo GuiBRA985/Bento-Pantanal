@@ -21,7 +21,7 @@ const pousadas = [
     descricao:"Uma das regiões mais tradicionais da Transpantaneira.",
     foto:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200",
     site:"https://www.rioclarolodge.com.br"
-}
+},
 
 {
     id: 5,
