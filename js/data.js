@@ -21,57 +21,54 @@ const locais = [
     },
 
     {
-    id: 3,
-    tipo: "hotel",
-    nome: "Pousada Rio Claro",
-    km: 42,
-    lat: -16.705,
-    lng: -56.846,
-    descricao: "Uma das regiões mais tradicionais da Transpantaneira.",
-    foto: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200",
-    site: "https://www.rioclarolodge.com.br",
-    whatsapp: "5565999999999"
-},
+        id: 3,
+        tipo: "hotel",
+        nome: "Pousada Rio Claro",
+        km: 42,
+        lat: -16.705,
+        lng: -56.846,
+        descricao: "Uma das regiões mais tradicionais da Transpantaneira.",
+        foto: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200",
+        site: "https://www.rioclarolodge.com.br",
+    },
 
     {
-    id: 4,
-    tipo: "destino",
-    nome: "Porto Jofre",
-    km: 145,
-    lat: -16.3106,
-    lng: -56.7417,
-    descricao: "Principal destino para observação de onças."
+        id: 4,
+        tipo: "destino",
+        nome: "Porto Jofre",
+        km: 145,
+        lat: -16.3106,
+        lng: -56.7417,
+        descricao: "Principal destino para observação de onças."
     }
 
     {
-    id: 5,
+        id: 5,
 
-    tipo: "hotel",
+        tipo: "hotel",
 
-    nome: "Araras Pantanal Eco Lodge",
+        nome: "Araras Pantanal Eco Lodge",
 
-    km: 32,
+        km: 32,
 
-    lat: -16.51175,
-    lng: -56.71094,
+        lat: -16.51175,
+        lng: -56.71094,
 
-    foto: "img/pousadas/araras.jpg",
+        foto: "img/pousadas/araras.jpg",
 
-    site: "https://araraslodge.com.br",
+        site: "https://araraslodge.com.br",
 
-    descricao:
-        "Uma das pousadas mais tradicionais e reconhecidas do Pantanal Norte. Construída em harmonia com a natureza, oferece experiências autênticas de ecoturismo durante todo o ano.",
+        descricao: "Uma das pousadas mais tradicionais e reconhecidas do Pantanal Norte. Construída em harmonia com a natureza, oferece experiências autênticas de ecoturismo durante todo o ano.",
 
-    destaque:
-        "Referência internacional em ecoturismo.",
+        destaque: "Referência internacional em ecoturismo.",
 
-    melhorPara: [
+        melhorPara: [
         "🦜 Birdwatching",
         "📸 Fotografia",
         "🌅 Nascer do sol"
     ],
 
-    fauna: [
+        fauna: [
         "Arara-azul",
         "Tuiuiú",
         "Tamanduá-bandeira",
@@ -79,7 +76,7 @@ const locais = [
         "Macaco-prego"
     ],
 
-    atividades: [
+        atividades: [
         "Trilhas ecológicas",
         "Passarelas suspensas",
         "Safári fotográfico",
@@ -89,7 +86,7 @@ const locais = [
         "Torres de observação"
     ],
 
-    tempoIdeal: "2 a 3 noites"
+        tempoIdeal: "2 a 3 noites"
 },
 
 ];
