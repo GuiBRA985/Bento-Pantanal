@@ -123,3 +123,245 @@ function atualizarRoteiro(){
 }
 
 document.getElementById("roteiro-count").textContent = roteiro.length;
+
+// ===========================================
+// CRIAÇÃO DOS MARCADORES
+// ===========================================
+
+locais.forEach(local => {
+
+    const marker = L.marker(
+        [local.lat, local.lng],
+        {
+            icon: icones[local.tipo]
+        }
+    ).addTo(map);
+
+    marcadores.push({
+        tipo: local.tipo,
+        marker: marker,
+        local: local
+    });
+
+    marker.on("click", () => {
+
+        abrirPainel(local);
+
+    });
+
+});
+
+
+// ===========================================
+// ABRIR PAINEL
+// ===========================================
+
+function abrirPainel(local){
+
+    let botoes = "";
+
+    if(local.site){
+
+        botoes += `
+            <a href="${local.site}" target="_blank">
+                <button style="width:100%">
+                    🌐 Conhecer a hospedagem
+                </button>
+            </a>
+        `;
+
+    }
+
+    if(local.tipo === "hotel"){
+
+        botoes += `
+            <button
+                style="width:100%"
+                onclick="adicionarAoRoteiro(${local.id})">
+
+                ➕ Adicionar ao roteiro
+
+            </button>
+        `;
+
+    }
+
+    panelContent.innerHTML = `
+
+        <img
+            src="${local.foto || 'https://placehold.co/900x500?text=Pantanal'}"
+            style="
+                width:100%;
+                height:220px;
+                object-fit:cover;
+                border-radius:12px;
+                margin-bottom:20px;
+            ">
+
+        <h2>${local.nome}</h2>
+
+        <p><strong>Km ${local.km}</strong></p>
+
+        <p>${local.descricao}</p>
+
+        ${local.destaque ? `
+            <h3>⭐ Destaque</h3>
+            <p>${local.destaque}</p>
+        ` : ""}
+
+        ${local.tempoIdeal ? `
+            <h3>⏱ Permanência recomendada</h3>
+            <p>${local.tempoIdeal}</p>
+        ` : ""}
+
+        <div
+            style="
+                display:flex;
+                flex-direction:column;
+                gap:12px;
+                margin-top:25px;
+            ">
+
+            ${botoes}
+
+        </div>
+
+    `;
+
+    infoPanel.classList.add("show");
+
+}
+
+
+// ===========================================
+// ADICIONAR AO ROTEIRO
+// ===========================================
+
+function adicionarAoRoteiro(id){
+
+    const local = locais.find(item => item.id === id);
+
+    if(!local) return;
+
+    const existe = roteiro.find(item => item.id === id);
+
+    if(existe){
+
+        alert("Essa pousada já está no roteiro.");
+
+        return;
+
+    }
+
+    roteiro.push(local);
+
+    document.getElementById("roteiro-count").textContent = roteiro.length;
+
+    atualizarRoteiro();
+
+    alert(local.nome + " adicionada ao roteiro!");
+
+}
+
+// ===========================================
+// FILTROS
+// ===========================================
+
+document.querySelectorAll(".bottom-menu button").forEach(botao => {
+
+    botao.addEventListener("click", () => {
+
+        const tipo = botao.dataset.tipo;
+
+        marcadores.forEach(item => {
+
+            if(tipo === "todos"){
+
+                if(!map.hasLayer(item.marker)){
+                    item.marker.addTo(map);
+                }
+
+                return;
+
+            }
+
+            if(item.tipo === tipo){
+
+                if(!map.hasLayer(item.marker)){
+                    item.marker.addTo(map);
+                }
+
+            }else{
+
+                if(map.hasLayer(item.marker)){
+                    map.removeLayer(item.marker);
+                }
+
+            }
+
+        });
+
+    });
+
+});
+
+
+// ===========================================
+// BOTÃO SOLICITAR EXPEDIÇÃO
+// ===========================================
+
+document.addEventListener("click",(e)=>{
+
+    if(e.target.id !== "orcamento-btn") return;
+
+    alert(
+`Em breve!
+
+A próxima etapa será:
+
+• Dados do viajante
+
+• Número do voo
+
+• Data de chegada
+
+• Objetivo da viagem
+
+• Restrições alimentares
+
+• Idioma
+
+Depois você receberá um roteiro personalizado da Pantanal Selvagem.
+`
+    );
+
+});
+
+
+// ===========================================
+// AJUSTAR O MAPA PARA TODOS OS PONTOS
+// ===========================================
+
+const grupo = L.featureGroup(
+    marcadores.map(item => item.marker)
+);
+
+if(marcadores.length > 1){
+
+    map.fitBounds(
+        grupo.getBounds(),
+        {
+            padding:[40,40]
+        }
+    );
+
+}
+
+
+// ===========================================
+// INICIALIZAÇÃO
+// ===========================================
+
+document.getElementById("roteiro-count").textContent = roteiro.length;
+
+atualizarRoteiro();
