@@ -172,6 +172,16 @@ function abrirPainel(local){
 
     }
 
+    botoes += `
+    <a
+        href="https://wa.me/5565999999999?text=Olá!%20Quero%20reservar%20uma%20data%20para%20a%20Expedição%20Jaguar%20-%20Porto%20Jofre.%20Vi%20o%20destino%20no%20Pantanal%20Explorer."
+        target="_blank">
+        <button style="width:100%">
+            🐆 Save the date
+        </button>
+    </a>
+`;
+
     if(local.tipo === "hotel"){
 
         botoes += `
