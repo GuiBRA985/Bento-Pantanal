@@ -9,7 +9,7 @@
 
 <title>Pantanal Explorer</title>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 
 <link rel="stylesheet" href="css/explorer.css">
 
@@ -17,34 +17,57 @@
 
 <body>
 
-<header>
+<header class="topbar">
 
 <div class="logo">
-🧭 Pantanal Explorer
+🐆 Pantanal Explorer
 </div>
-
-<input
-type="text"
-placeholder="Buscar pousada, animal ou km..."
->
 
 </header>
 
 <div id="map"></div>
 
-<div id="info-panel" class="hidden">
+<!-- Painel da pousada -->
 
-    <button id="close-panel">✕</button>
+<div id="info-panel">
 
-    <div id="panel-content">
+<button id="close-panel">✕</button>
 
-        <h2>Pantanal Explorer</h2>
+<div id="panel-content">
 
-        <p>Selecione um ponto no mapa.</p>
+<h2>Pantanal Explorer</h2>
 
-    </div>
+<p>Selecione uma pousada para ver os detalhes.</p>
 
 </div>
+
+</div>
+
+<!-- Painel do roteiro -->
+
+<div id="roteiro-panel">
+
+<button id="close-roteiro">✕</button>
+
+<div id="roteiro-content">
+
+<h2>📋 Meu Roteiro</h2>
+
+<p>Nenhuma parada adicionada.</p>
+
+</div>
+
+</div>
+
+<!-- Botão flutuante -->
+
+<button id="roteiro-btn">
+
+📋 Meu Roteiro
+
+<span id="roteiro-count">0</span>
+
+</button>
 
 <nav class="bottom-menu">
 
@@ -54,19 +77,16 @@ placeholder="Buscar pousada, animal ou km..."
 
 <button data-tipo="cidade">🏙️</button>
 
-<button data-tipo="destino">📍</button>
+<button data-tipo="destino">🐆</button>
 
 </nav>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <script src="js/data.js"></script>
+
 <script src="js/explorer.js"></script>
 
-<button id="roteiro-btn">
-    📋 Meu Roteiro
-    <span id="roteiro-count">0</span>
-</button>
 </body>
 
-</html>
 </html>
