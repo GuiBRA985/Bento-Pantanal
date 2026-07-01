@@ -1,4 +1,5 @@
 const pousadas = [
+
   {
     id: 5,
     tipo: "hotel",
@@ -8,10 +9,11 @@ const pousadas = [
     lng: -56.71094,
     foto: "img/pousadas/araras.jpg",
     site: "https://araraslodge.com.br",
+    pacoteJaguar: true,
     roteiroJaguar: "Primeira parada da Expedição Jaguar",
     diasPacote: 2,
-    descricao: "Primeira grande base da Expedição Jaguar. A Araras é uma das pousadas mais tradicionais do Pantanal Norte, ideal para entrar no ritmo da Transpantaneira com conforto, natureza e observação de fauna.",
-    destaque: "Excelente início para quem deseja conhecer o Pantanal com estrutura, aves, trilhas, torres de observação e safáris fotográficos.",
+    descricao: "Primeira grande base da Expedição Jaguar. A Araras é uma das pousadas mais tradicionais do Pantanal Norte, ideal para entrar no ritmo da Transpantaneira.",
+    destaque: "Início forte da viagem: aves, trilhas, torres de observação e ecoturismo.",
     melhorPara: ["🦜 Birdwatching", "📸 Fotografia", "🌅 Nascer do sol", "🌿 Ecoturismo"],
     fauna: ["Arara-azul", "Tuiuiú", "Tamanduá-bandeira", "Veado-campeiro", "Macaco-prego", "Jacaré-do-pantanal"],
     atividades: ["Trilhas ecológicas", "Passarelas suspensas", "Safári fotográfico", "Safári noturno", "Canoagem", "Cavalgadas", "Torres de observação"],
@@ -27,13 +29,91 @@ const pousadas = [
     lng: -56.846,
     foto: "img/pousadas/rio-claro.jpg",
     site: "https://www.rioclarolodge.com.br",
+    pacoteJaguar: true,
     roteiroJaguar: "Segunda parada da Expedição Jaguar",
     diasPacote: 3,
-    descricao: "Segunda base da Expedição Jaguar. A Rio Claro é uma parada clássica da Transpantaneira, marcada pela presença do rio, passeios embarcados e forte contato com a vida selvagem pantaneira.",
-    destaque: "Boa escolha para quem quer combinar pousada, rio, fauna abundante e progressão natural rumo a Porto Jofre.",
+    descricao: "Segunda base da Expedição Jaguar. A Rio Claro é uma parada clássica da Transpantaneira, marcada pela presença do rio, passeios embarcados e forte contato com a vida selvagem.",
+    destaque: "Boa escolha para combinar rio, fauna abundante e progressão natural rumo a Porto Jofre.",
     melhorPara: ["🚤 Passeios de barco", "🐊 Vida selvagem", "📸 Fotografia", "🦜 Observação de aves"],
     fauna: ["Jacaré-do-pantanal", "Capivara", "Tuiuiú", "Garças", "Ariranha", "Macacos", "Aves aquáticas"],
     atividades: ["Passeio de barco", "Safári fotográfico", "Observação de aves", "Trilhas", "Passeios noturnos", "Contemplação do Rio Claro"],
     tempoIdeal: "3 noites no pacote promocional"
+  },
+
+  {
+    id: 2,
+    tipo: "hotel",
+    nome: "Pousada Piuval",
+    km: 10,
+    lat: -16.592,
+    lng: -56.741,
+    foto: "img/pousadas/piuval.jpg",
+    site: "https://www.pousadapiuval.com.br",
+    pacoteJaguar: false,
+    roteiroJaguar: "Parada complementar da Transpantaneira",
+    descricao: "Uma das primeiras grandes paradas para quem sai de Poconé. Boa introdução ao Pantanal, com paisagens abertas e contato rápido com a fauna.",
+    destaque: "Excelente para quem quer começar a viagem com calma logo no início da estrada.",
+    melhorPara: ["🦜 Aves", "📸 Paisagens", "🐊 Primeiros avistamentos", "🌅 Pôr do sol"],
+    fauna: ["Tuiuiú", "Araras", "Jacaré-do-pantanal", "Capivara", "Veado-campeiro"],
+    atividades: ["Safári fotográfico", "Cavalgada", "Observação de aves", "Caminhadas leves"],
+    tempoIdeal: "1 a 2 noites"
+  },
+
+  {
+    id: 6,
+    tipo: "hotel",
+    nome: "Pouso Alegre Lodge",
+    km: 33,
+    lat: -16.506,
+    lng: -56.742,
+    foto: "img/pousadas/pouso-alegre.jpg",
+    site: "https://www.google.com/search?q=Pouso+Alegre+Lodge+Pantanal",
+    pacoteJaguar: false,
+    roteiroJaguar: "Parada complementar da Transpantaneira",
+    descricao: "Uma opção tradicional para quem busca contato direto com a natureza pantaneira, em região boa para fauna e observação de aves.",
+    destaque: "Boa alternativa para roteiros personalizados com foco em vida selvagem.",
+    melhorPara: ["🦜 Aves", "🐾 Fauna", "📸 Fotografia", "🌿 Natureza"],
+    fauna: ["Tamanduá-bandeira", "Tuiuiú", "Araras", "Jacaré-do-pantanal", "Capivaras"],
+    atividades: ["Observação de aves", "Safári fotográfico", "Caminhadas", "Contemplação da fauna"],
+    tempoIdeal: "2 a 3 noites"
+  },
+
+  {
+    id: 7,
+    tipo: "hotel",
+    nome: "Pantanal Mato Grosso Hotel",
+    km: 65,
+    lat: -16.783,
+    lng: -56.952,
+    foto: "img/pousadas/pantanal-mato-grosso.jpg",
+    site: "https://www.google.com/search?q=Pantanal+Mato+Grosso+Hotel+Transpantaneira",
+    pacoteJaguar: false,
+    roteiroJaguar: "Parada complementar da Transpantaneira",
+    descricao: "Parada em trecho mais avançado da Transpantaneira, útil para quem deseja dividir melhor a viagem até Porto Jofre.",
+    destaque: "Boa opção para roteiros mais longos ou personalizados.",
+    melhorPara: ["🚙 Logística", "🐊 Fauna", "📸 Fotografia", "🌅 Paisagens"],
+    fauna: ["Jacaré-do-pantanal", "Capivara", "Tuiuiú", "Garças", "Aves aquáticas"],
+    atividades: ["Safári fotográfico", "Observação de fauna", "Passeios pela região", "Descanso no caminho"],
+    tempoIdeal: "1 a 2 noites"
+  },
+
+  {
+    id: 8,
+    tipo: "hotel",
+    nome: "Santa Rosa Pantanal Hotel",
+    km: 90,
+    lat: -16.974,
+    lng: -57.033,
+    foto: "img/pousadas/santa-rosa.jpg",
+    site: "https://www.google.com/search?q=Santa+Rosa+Pantanal+Hotel",
+    pacoteJaguar: false,
+    roteiroJaguar: "Parada complementar da Transpantaneira",
+    descricao: "Ponto de apoio para quem deseja explorar trechos mais profundos da Transpantaneira antes de seguir ao destino das onças.",
+    destaque: "Interessante para roteiros personalizados com mais dias de estrada.",
+    melhorPara: ["🚙 Roteiros longos", "🐊 Vida selvagem", "🌅 Pantanal profundo", "📸 Fotografia"],
+    fauna: ["Jacaré-do-pantanal", "Capivara", "Tuiuiú", "Garças", "Aves aquáticas"],
+    atividades: ["Observação de fauna", "Fotografia", "Passeios regionais", "Descanso antes de Porto Jofre"],
+    tempoIdeal: "1 a 2 noites"
   }
+
 ];
