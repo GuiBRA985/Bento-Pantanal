@@ -185,4 +185,11 @@ width:100%;
 max-width:340px;
 }
 
+.footer{
+    background:#07110d;
+    text-align:center;
+    padding:30px 20px;
+    color:#ccc;
+}
+
 }
