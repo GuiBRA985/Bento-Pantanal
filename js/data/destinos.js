@@ -7,34 +7,46 @@ const destinos = [
         km: 145,
         lat: -17.3646,
         lng: -56.7749,
-        foto: "https://images.unsplash.com/photo-1560703650-ef3e0f254ae0?w=1200",
-        site: "https://www.google.com/maps/search/Porto+Jofre+Pantanal",
-        descricao: "Região no fim da Transpantaneira e um dos principais pontos do Pantanal Norte para observação de onças-pintadas. É destino clássico para passeios de barco, fotografia de vida selvagem e expedições até o rio Cuiabá e seus corixos.",
-        destaque: "Considerado um dos melhores lugares do mundo para avistar onça-pintada em ambiente natural.",
+
+        foto: "img/destinos/porto-jofre.jpg",
+        site: "https://www.google.com/search?q=Porto+Jofre+Pantanal",
+
+        roteiroJaguar: "Destino final da Expedição Jaguar",
+        diasPacote: 3,
+
+        descricao:
+            "Destino final da Expedição Jaguar. Porto Jofre é um dos lugares mais famosos do mundo para observação da onça-pintada em vida livre, especialmente nos passeios de barco pelos rios e corixos do Pantanal Norte.",
+
+        destaque:
+            "O ponto alto da viagem: a busca pela onça-pintada em liberdade.",
+
         melhorPara: [
-            "🐆 Observação de onças",
-            "📸 Fotografia de fauna",
-            "🚤 Passeios de barco",
+            "🐆 Onça-pintada",
+            "🚤 Safári fluvial",
+            "📸 Fotografia de vida selvagem",
             "🌅 Pôr do sol no rio"
         ],
+
         fauna: [
             "Onça-pintada",
+            "Ariranha",
             "Jacaré-do-pantanal",
             "Capivara",
-            "Ariranha",
             "Tuiuiú",
-            "Garça",
+            "Garças",
             "Martim-pescador"
         ],
+
         atividades: [
-            "Safári fluvial",
+            "Passeios de barco",
             "Observação de onças",
-            "Fotografia de aves",
-            "Passeios pelo rio Cuiabá",
-            "Amanhecer e pôr do sol no Pantanal",
-            "Roteiros de natureza com guia local"
+            "Fotografia de fauna",
+            "Amanhecer no rio",
+            "Pôr do sol no Pantanal",
+            "Observação de aves aquáticas"
         ],
-        tempoIdeal: "2 a 4 noites"
+
+        tempoIdeal: "3 noites no pacote promocional"
     }
 
 ];
