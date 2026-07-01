@@ -23,4 +23,52 @@ const pousadas = [
     site:"https://www.rioclarolodge.com.br"
 }
 
+{
+    id: 5,
+
+    tipo: "hotel",
+
+    nome: "Araras Pantanal Eco Lodge",
+
+    km: 32,
+
+    lat: -16.51175,
+    lng: -56.71094,
+
+    foto: "img/pousadas/araras.jpg",
+
+    site: "https://araraslodge.com.br",
+
+    descricao:
+        "Uma das pousadas mais tradicionais e reconhecidas do Pantanal Norte. Construída em harmonia com a natureza, oferece experiências autênticas de ecoturismo durante todo o ano.",
+
+    destaque:
+        "Referência internacional em ecoturismo.",
+
+    melhorPara: [
+        "🦜 Birdwatching",
+        "📸 Fotografia",
+        "🌅 Nascer do sol"
+    ],
+
+    fauna: [
+        "Arara-azul",
+        "Tuiuiú",
+        "Tamanduá-bandeira",
+        "Veado-campeiro",
+        "Macaco-prego"
+    ],
+
+    atividades: [
+        "Trilhas ecológicas",
+        "Passarelas suspensas",
+        "Safári fotográfico",
+        "Safári noturno",
+        "Canoagem",
+        "Cavalgadas",
+        "Torres de observação"
+    ],
+
+    tempoIdeal: "2 a 3 noites"
+},
 ];
