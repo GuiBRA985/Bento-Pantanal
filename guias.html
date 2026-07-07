@@ -95,7 +95,7 @@ function renderizar(lista){
       </div>
 
       ${g.instagram ? `<a class="btn" href="${g.instagram}" target="_blank">Instagram</a>` : ""}
-      <a class="btn" href="guias/${g.slug}.html">Ver perfil</a>
+      <a class="btn" href="guia.html?slug=${g.slug}">Ver perfil</a>
     </div>
   `).join("");
 }
