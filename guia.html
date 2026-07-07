@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil do Guia | Pantanal Explorer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f1e8;color:#173A2B}
+.hero{background:#173A2B;color:white;padding:50px 25px;text-align:center}
+main{max-width:900px;margin:auto;padding:25px}
+.card{background:white;border-radius:18px;padding:25px;margin-bottom:22px;box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.badge{display:inline-block;background:#C9A227;color:#173A2B;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:bold}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:#eef3ec;padding:8px 12px;border-radius:999px}
+.btn{display:inline-block;background:#173A2B;color:white;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:bold;margin:8px 8px 0 0}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<h1 id="nome">Carregando guia...</h1>
+<p id="subtitulo">Pantanal Explorer</p>
+</section>
+
+<main id="conteudo">
+<p>Carregando perfil...</p>
+</main>
+
+<script>
+const SUPABASE_URL = "https://zkwcogcwaqktyqblosxw.supabase.co";
+const SUPABASE_KEY = "SUA_ANON_KEY_AQUI";
+
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const params = new URLSearchParams(window.location.search);
+const slug = params.get("slug");
+
+async function carregarGuia(){
+  if(!slug){
+    document.getElementById("conteudo").innerHTML = "<p>Guia não informado.</p>";
+    return;
+  }
+
+  const { data, error } = await db
+    .from("guides")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
+  if(error || !data){
+    document.getElementById("conteudo").innerHTML = "<p>Guia não encontrado.</p>";
+    return;
+  }
+
+  document.title = data.nome + " | Pantanal Explorer";
+  document.getElementById("nome").textContent = data.nome;
+  document.getElementById("subtitulo").textContent = "Guia do Pantanal Mato-Grossense";
+
+  document.getElementById("conteudo").innerHTML = `
+    <div class="card">
+      <span class="badge">${data.cadastur_status || "Aguardando validação"}</span>
+      <h2>Sobre o guia</h2>
+      <p>${data.bio || "Guia local no Pantanal."}</p>
+    </div>
+
+    <div class="card">
+      <h2>Idiomas</h2>
+      <div class="tags">
+        ${(data.idiomas || []).map(i => `<span class="tag">${i}</span>`).join("")}
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Especialidades</h2>
+      <div class="tags">
+        ${(data.especialidades || []).map(e => `<span class="tag">${e}</span>`).join("")}
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Redes e contato</h2>
+      ${data.instagram ? `<a class="btn" href="${data.instagram}" target="_blank">Instagram</a>` : ""}
+      ${data.whatsapp ? `<a class="btn" href="https://wa.me/${data.whatsapp}" target="_blank">WhatsApp</a>` : ""}
+      ${data.email ? `<a class="btn" href="mailto:${data.email}">E-mail</a>` : ""}
+    </div>
+
+    <div class="card">
+      <h2>Galeria</h2>
+      ${
+        data.galeria_link
+        ? `<a class="btn" href="${data.galeria_link}" target="_blank">Abrir galeria</a>`
+        : `<p>Galeria aguardando link do guia.</p>`
+      }
+    </div>
+
+    <div class="card">
+      <h2>Cadastur</h2>
+      <p><strong>Número:</strong> ${data.cadastur_numero || "A informar"}</p>
+      <p><strong>Status:</strong> ${data.cadastur_status || "Aguardando validação"}</p>
+    </div>
+  `;
+}
+
+carregarGuia();
+</script>
+
+</body>
+</html>
