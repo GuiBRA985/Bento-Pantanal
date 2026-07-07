@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guias | Pantanal Explorer</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -16,7 +15,6 @@ button{border:none;border-radius:999px;padding:10px 16px;background:#173A2B;colo
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .card{background:white;border-radius:18px;padding:22px;box-shadow:0 8px 25px rgba(0,0,0,.12)}
 .badge{display:inline-block;background:#C9A227;color:#173A2B;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:bold}
-.card h2{margin-bottom:8px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .tag{background:#eef3ec;padding:7px 10px;border-radius:999px;font-size:13px}
 .btn{display:inline-block;margin-top:12px;background:#173A2B;color:white;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:bold}
@@ -53,7 +51,6 @@ const SUPABASE_URL = "https://zkwcogcwaqktyqblosxw.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inprd2NvZ2N3YXFrdHlxYmxvc3h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0NDA3MTksImV4cCI6MjA5OTAxNjcxOX0.OVHitiYbb0LDpoxedYZWcN2ljihbHwQPo-Xf6Pf1D4A";
 
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
 let todosGuias = [];
 
 async function carregarGuias(){
@@ -84,4 +81,46 @@ function renderizar(lista){
   container.innerHTML = lista.map(g => `
     <div class="card">
       <span class="badge">${g.cadastur_status || "aguardando validação"}</span>
-      <h2>${g.nome}</
+      <h2>${g.nome}</h2>
+      <p>${g.bio || "Guia local no Pantanal."}</p>
+
+      <h4>Idiomas</h4>
+      <div class="tags">
+        ${(g.idiomas || []).map(i => `<span class="tag">${i}</span>`).join("")}
+      </div>
+
+      <h4>Especialidades</h4>
+      <div class="tags">
+        ${(g.especialidades || []).map(e => `<span class="tag">${e}</span>`).join("")}
+      </div>
+
+      ${g.instagram ? `<a class="btn" href="${g.instagram}" target="_blank">Instagram</a>` : ""}
+      <a class="btn" href="guias/${g.slug}.html">Ver perfil</a>
+    </div>
+  `).join("");
+}
+
+function filtrar(termo){
+  if(termo === "todos"){
+    renderizar(todosGuias);
+    return;
+  }
+
+  const filtrados = todosGuias.filter(g => {
+    const texto = [
+      g.nome,
+      ...(g.idiomas || []),
+      ...(g.especialidades || [])
+    ].join(" ").toLowerCase();
+
+    return texto.includes(termo.toLowerCase());
+  });
+
+  renderizar(filtrados);
+}
+
+carregarGuias();
+</script>
+
+</body>
+</html>
