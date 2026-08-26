@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Página não encontrada | Bento Pantanal</title>
+  <link rel="stylesheet" href="/css/guides.css">
+  <script>
+    (() => {
+      const parts = location.pathname.split("/").filter(Boolean);
+      const reserved = new Set(["cadastro", "login", "painel", "perfil"]);
+      if (parts.length === 2 && parts[0] === "guias" && !reserved.has(parts[1])) {
+        location.replace(`/guias/perfil/?slug=${encodeURIComponent(parts[1])}`);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="account-header">
+    <nav class="site-nav"><a class="brand" href="/">BENTO PANTANAL</a></nav>
+  </header>
+  <main class="account-shell"><div class="empty-state"><strong>Página não encontrada.</strong><br><a href="/">Voltar ao início</a> ou <a href="/guias/">encontrar um guia</a>.</div></main>
+</body>
+</html>
+

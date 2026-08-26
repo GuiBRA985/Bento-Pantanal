@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173a2b">
+  <meta name="robots" content="noindex">
+  <title>Painel do guia | Bento Pantanal</title>
+  <link rel="stylesheet" href="/css/guides.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js" defer></script>
+  <script src="/js/supabase-client.js" defer></script>
+  <script src="/js/guide-options.js" defer></script>
+  <script src="/js/guide-panel.js" defer></script>
+</head>
+<body>
+  <header class="account-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/">BENTO PANTANAL</a>
+      <div class="nav-actions"><a class="nav-link" href="/guias/">Ver guias</a><button class="nav-link" id="panel-sign-out" type="button">Sair</button></div>
+    </nav>
+    <div class="account-intro">
+      <span class="eyebrow">Área do guia</span>
+      <h1>Cuide do seu perfil.</h1>
+      <p>Você controla suas informações. A aprovação e a verificação do Cadastur continuam sob responsabilidade da administração.</p>
+    </div>
+  </header>
+
+  <main class="page-shell hidden" id="panel-shell">
+    <div class="notice hidden" id="panel-notice" role="status"></div>
+    <section class="surface status-row">
+      <div><span class="eyebrow" style="color:#637068;margin-bottom:5px">Situação do cadastro</span><span class="status-pill" id="guide-status">Carregando</span></div>
+      <a class="button button-small hidden" id="public-profile-link" href="#">Abrir perfil público</a>
+    </section>
+
+    <div class="content-grid" style="margin-top:20px">
+      <form class="surface form-grid" id="profile-form">
+        <fieldset class="form-section">
+          <legend>Perfil profissional</legend>
+          <div class="form-grid two-columns">
+            <div class="field"><label for="panel-name">Nome completo *</label><input id="panel-name" name="nome" required></div>
+            <div class="field"><label for="panel-professional-name">Nome profissional</label><input id="panel-professional-name" name="nome_profissional"></div>
+            <div class="field"><label for="panel-email">E-mail profissional *</label><input id="panel-email" name="email" type="email" required></div>
+            <div class="field"><label for="panel-whatsapp">WhatsApp *</label><input id="panel-whatsapp" name="whatsapp" required></div>
+            <div class="field"><label for="panel-instagram">Instagram</label><input id="panel-instagram" name="instagram"></div>
+            <div class="field"><label for="panel-facebook">Facebook</label><input id="panel-facebook" name="facebook"></div>
+            <div class="field"><label for="panel-site">Site</label><input id="panel-site" name="site" type="url"></div>
+            <div class="field"><label for="panel-cadastur">Cadastur *</label><input id="panel-cadastur" name="cadastur_numero" required><p class="field-help">Alterar o número reinicia a verificação.</p></div>
+          </div>
+          <div class="field"><label for="panel-bio">Biografia *</label><textarea id="panel-bio" name="bio" minlength="60" maxlength="1200" required></textarea></div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Atuação</legend>
+          <div class="field"><span class="field-label">Idiomas</span><div class="checkbox-grid" id="panel-language-options"></div></div>
+          <div class="field"><span class="field-label">Regiões</span><div class="checkbox-grid" id="panel-region-options"></div></div>
+          <div class="field"><span class="field-label">Especialidades</span><div class="checkbox-grid" id="panel-specialty-options"></div></div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Imagens principais</legend>
+          <div class="form-grid two-columns">
+            <div class="field"><img class="avatar-preview hidden" id="current-profile-image" alt="Foto de perfil atual"><label for="panel-profile-file">Trocar foto de perfil</label><input id="panel-profile-file" name="foto_perfil" type="file" accept="image/jpeg,image/png,image/webp"></div>
+            <div class="field"><img class="media-preview hidden" id="current-cover-image" alt="Foto de capa atual"><label for="panel-cover-file">Trocar foto de capa</label><input id="panel-cover-file" name="foto_capa" type="file" accept="image/jpeg,image/png,image/webp"></div>
+          </div>
+        </fieldset>
+        <button class="button button-gold" type="submit">Salvar alterações</button>
+      </form>
+
+      <section class="surface">
+        <h2>Galeria</h2>
+        <form class="form-grid" id="gallery-upload-form">
+          <div class="field"><label for="panel-gallery-files">Adicionar fotos</label><input id="panel-gallery-files" name="gallery" type="file" accept="image/jpeg,image/png,image/webp" multiple required></div>
+          <button class="button button-small" type="submit">Enviar fotos</button>
+        </form>
+        <div class="gallery-grid" id="panel-gallery" style="margin-top:20px"></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
+
