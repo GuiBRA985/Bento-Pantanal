@@ -1,1 +1,0 @@
-console.log('Pantanal Selvagem iniciado');
