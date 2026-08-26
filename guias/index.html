@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173a2b">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Administração de guias | Bento Pantanal</title>
+  <link rel="stylesheet" href="/css/guides.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js" defer></script>
+  <script src="/js/supabase-client.js" defer></script>
+  <script src="/js/admin-guides.js" defer></script>
+</head>
+<body>
+  <header class="account-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/">BENTO PANTANAL</a>
+      <div class="nav-actions"><a class="nav-link" href="/guias/">Ver guias</a><button class="nav-link" id="admin-sign-out" type="button">Sair</button></div>
+    </nav>
+    <div class="account-intro">
+      <span class="eyebrow">Administração</span>
+      <h1>Verificação de guias.</h1>
+      <p>Confira o Cadastur e as informações profissionais antes de aprovar qualquer perfil.</p>
+    </div>
+  </header>
+
+  <main class="page-shell hidden" id="admin-shell">
+    <div class="notice hidden" id="admin-notice" role="status"></div>
+    <form class="filter-panel" id="admin-filters" style="margin-top:-34px">
+      <div class="field"><label for="admin-search">Buscar</label><input id="admin-search" name="search" type="search" placeholder="Nome ou Cadastur"></div>
+      <div class="field"><label for="admin-status">Situação</label><select id="admin-status" name="status"><option value="pending">Pendentes</option><option value="">Todos</option><option value="approved">Aprovados</option><option value="rejected">Rejeitados</option><option value="suspended">Suspensos</option></select></div>
+    </form>
+    <div class="results-bar"><h2>Cadastros</h2><span class="results-count" id="admin-results-count">Carregando…</span></div>
+    <section class="admin-list" id="admin-guide-list"><div class="empty-state"><span class="loading-dots">Carregando cadastros</span></div></section>
+  </main>
+</body>
+</html>
+
