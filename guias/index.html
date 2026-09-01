@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Encontre guias de turismo verificados no Pantanal por idioma, região e especialidade.">
+  <meta property="og:title" content="Rede de Guias Verificados | Bento Pantanal">
+  <meta property="og:description" content="Profissionais do Pantanal com cadastro e Cadastur verificados.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pantanal.bento.host/guias/">
+  <meta property="og:image" content="https://pantanal.bento.host/assets/og-guias.png">
+  <meta name="theme-color" content="#173a2b">
+  <title>Rede de Guias Verificados | Bento Pantanal</title>
+  <link rel="canonical" href="https://pantanal.bento.host/guias/">
+  <link rel="stylesheet" href="/css/guides.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">🐆</span><span class="brand-text">BENTO PANTANAL</span></a>
+      <div class="nav-links">
+        <a href="/">Início</a>
+        <a href="/explorer.html">Explorer</a>
+        <a href="/guias/" aria-current="page">Guias</a>
+        <a class="nav-cta" href="/guias/login/">Área do guia</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="public-hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Rede profissional verificada</span>
+          <h1>O Pantanal contado por quem conhece cada caminho.</h1>
+          <p>Encontre guias de turismo por idioma, região e especialidade. Cada perfil público passa por conferência administrativa e verificação do Cadastur.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#encontrar">Encontrar um guia</a>
+            <a class="button button-light" href="/guias/cadastro/">Sou guia e quero participar</a>
+          </div>
+          <div class="trust-line" aria-label="Diferenciais">
+            <span>✓ Cadastro conferido</span>
+            <span>✓ Cadastur verificado</span>
+            <span>✓ Contato direto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters-section" id="encontrar" aria-labelledby="titulo-lista">
+      <div class="container">
+        <form class="filters-card" id="guide-filters" role="search">
+          <div class="field">
+            <label for="search">Buscar pelo nome</label>
+            <input id="search" type="search" placeholder="Ex.: João, observação de aves" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="language-filter">Idioma</label>
+            <select id="language-filter"><option value="">Todos os idiomas</option></select>
+          </div>
+          <div class="field">
+            <label for="region-filter">Região</label>
+            <select id="region-filter"><option value="">Todas as regiões</option></select>
+          </div>
+          <div class="field">
+            <label for="specialty-filter">Especialidade</label>
+            <select id="specialty-filter"><option value="">Todas as especialidades</option></select>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="listing-section" aria-labelledby="titulo-lista">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Profissionais do território</span>
+            <h2 id="titulo-lista">Guias verificados</h2>
+            <p id="guide-count" aria-live="polite">Carregando profissionais...</p>
+          </div>
+          <a class="button button-outline" href="/guias/cadastro/">Cadastrar meu perfil</a>
+        </div>
+        <div id="guides-loading" class="loading-grid" aria-hidden="true">
+          <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+        <div id="guides-grid" class="guides-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Bento Pantanal — O Pantanal não se visita. O Pantanal se vive.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/guides-common.js"></script>
+  <script src="/js/guides-list.js"></script>
+</body>
+</html>
