@@ -1,5 +1,28 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Redirecionando | Bento Pantanal</title></head>
-<body><p>Abrindo perfil...</p><script>const p=location.pathname.split("/").filter(Boolean);if(p[0]==="guias"&&p[1])location.replace(`/guias/perfil/?slug=${encodeURIComponent(p[1])}`);else location.replace("/guias/");</script></body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#173a2b">
+  <title>Página não encontrada | Bento Pantanal</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#f3f0e8;color:#173a2b;font-family:Arial,sans-serif}.card{width:min(560px,100%);padding:36px;border-radius:22px;background:#fff;box-shadow:0 18px 55px rgba(23,58,43,.14);text-align:center}h1{font-size:clamp(2rem,8vw,4rem);margin:0 0 12px}p{font-size:1.05rem;line-height:1.6}.links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}a{padding:12px 18px;border-radius:999px;background:#173a2b;color:#fff;text-decoration:none;font-weight:700}a.secondary{background:#d8b24a;color:#173a2b}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span>🐆 BENTO PANTANAL</span>
+    <h1>404</h1>
+    <p>A trilha terminou aqui. Volte ao Pantanal Bento ou encontre um guia verificado.</p>
+    <div class="links"><a href="/">Início</a><a class="secondary" href="/guias/">Rede de Guias</a></div>
+  </main>
+  <script>
+    const parts = location.pathname.split("/").filter(Boolean);
+    const reserved = new Set(["cadastro", "login", "painel", "perfil"]);
+    if (parts[0] === "guias" && parts[1] && !reserved.has(parts[1])) {
+      location.replace(`/guias/perfil/?slug=${encodeURIComponent(parts[1])}`);
+    }
+  </script>
+</body>
 </html>
