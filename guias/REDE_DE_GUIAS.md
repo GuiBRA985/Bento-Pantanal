@@ -16,6 +16,17 @@ O Bento Pantanal continua como site estático no GitHub Pages. A Rede de Guias u
 
 Não há servidor Node, build ou variável secreta no navegador. A URL e a chave `anon` pública do Supabase ficam em `/js/supabase-config.js`. Nunca coloque a chave `service_role` nesse arquivo.
 
+## Guias VIP
+
+Os perfis VIP ficam no início do array `VIP_GUIDES`, em `/js/guides-list.js`. Eles usam o mesmo cartão da listagem, recebem o selo **Guia VIP** e o botão **Ver perfil** abre a página profissional externa.
+
+Os dois primeiros são:
+
+- Tchaco Pantaneiro → `https://www.pantanalwild4you.com.br/`
+- Jhimy → `https://www.pantanaltourexpress.com.br/`
+
+Idiomas, regiões, especialidades e fotografias desses cartões podem ser preenchidos posteriormente no mesmo bloco, sem alterar as páginas exclusivas.
+
 ## Ativação do banco
 
 Antes de testar cadastro e administração, abra o **SQL Editor** do Supabase e execute integralmente:
