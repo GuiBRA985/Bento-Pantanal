@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b2118"/><stop offset="1" stop-color="#24523d"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#c9a227"/><stop offset="1" stop-color="#eadb9c"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <circle cx="1000" cy="120" r="250" fill="#c9a227" opacity=".08"/>
+  <circle cx="1000" cy="120" r="170" fill="#c9a227" opacity=".08"/>
+  <path d="M0 465 C180 410 315 520 510 467 C700 414 810 520 1200 402 V630 H0Z" fill="#102f22"/>
+  <path d="M0 515 C250 455 430 585 690 510 C870 460 1010 535 1200 472 V630 H0Z" fill="#0a1d15"/>
+  <path d="M92 480V352M65 390l27-72 28 72M55 425l37-85 40 85M1072 456V328M1040 374l32-82 33 82M1030 417l42-102 44 102" stroke="#c9a227" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/>
+  <rect x="84" y="82" width="70" height="70" rx="35" fill="url(#gold)"/>
+  <text x="119" y="132" text-anchor="middle" fill="#0b2118" font-family="Georgia,serif" font-weight="700" font-size="38">B</text>
+  <text x="176" y="128" fill="#ffffff" font-family="Arial,sans-serif" font-weight="700" font-size="28" letter-spacing="4">BENTO PANTANAL</text>
+  <rect x="86" y="208" width="80" height="5" rx="2.5" fill="#c9a227"/>
+  <text x="86" y="278" fill="#eadb9c" font-family="Arial,sans-serif" font-weight="700" font-size="22" letter-spacing="4">REDE PROFISSIONAL VERIFICADA</text>
+  <text x="82" y="365" fill="#ffffff" font-family="Georgia,serif" font-size="68">Guias do Pantanal</text>
+  <text x="86" y="420" fill="#dce7e0" font-family="Arial,sans-serif" font-size="28">Experiência local. Cadastur verificado. Contato direto.</text>
+  <text x="86" y="564" fill="#c9a227" font-family="Arial,sans-serif" font-size="23" font-weight="700">pantanal.bento.host/guias/</text>
+</svg>
