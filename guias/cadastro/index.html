@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#173a2b">
+  <title>Cadastro de guia | Bento Pantanal</title>
+  <link rel="stylesheet" href="/css/guides.css">
+</head>
+<body class="account-page">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">🐆</span><span class="brand-text">BENTO PANTANAL</span></a>
+      <div class="nav-links"><a href="/guias/">Ver guias</a><a class="nav-cta" href="/guias/login/">Já tenho conta</a></div>
+    </nav>
+  </header>
+
+  <main class="account-main">
+    <header class="account-heading">
+      <span class="eyebrow">Cadastro gratuito</span>
+      <h1>Faça parte da Rede de Guias.</h1>
+      <p>O perfil fica pendente até a conferência manual. Nenhum cadastro é publicado automaticamente.</p>
+    </header>
+
+    <section id="registration-auth" class="panel-card" style="max-width:620px">
+      <h2>Primeiro, crie sua conta</h2>
+      <p>Você usará este acesso para editar somente o seu perfil.</p>
+      <div id="registration-auth-message" class="message" role="status"></div>
+      <form id="registration-auth-form" class="form-grid">
+        <div class="field">
+          <label for="account-email">E-mail</label>
+          <input id="account-email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="account-password">Senha</label>
+          <input id="account-password" type="password" minlength="6" autocomplete="new-password" required>
+        </div>
+        <div class="form-actions field-full">
+          <button class="button" type="submit">Criar conta e continuar</button>
+          <a class="text-link" href="/guias/login/?next=/guias/cadastro/">Já tenho conta</a>
+        </div>
+      </form>
+    </section>
+
+    <section id="registration-area" class="account-grid hidden">
+      <form id="guide-registration-form" class="panel-card" enctype="multipart/form-data">
+        <h2>Seu perfil profissional</h2>
+        <p>Campos com * são obrigatórios.</p>
+        <div id="registration-message" class="message" role="status"></div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="full-name">Nome completo *</label>
+            <input id="full-name" name="nome" maxlength="120" required>
+          </div>
+          <div class="field">
+            <label for="professional-name">Nome profissional</label>
+            <input id="professional-name" name="nome_profissional" maxlength="100">
+          </div>
+          <div class="field">
+            <label for="profile-image">Foto de perfil *</label>
+            <input id="profile-image" name="foto_perfil" type="file" accept="image/*" required>
+          </div>
+          <div class="field">
+            <label for="cover-image">Foto de capa *</label>
+            <input id="cover-image" name="foto_capa" type="file" accept="image/*" required>
+          </div>
+          <div class="field">
+            <label for="cadastur">Número do Cadastur *</label>
+            <input id="cadastur" name="cadastur_numero" maxlength="40" required>
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp com DDD *</label>
+            <input id="whatsapp" name="whatsapp" type="tel" placeholder="5565999999999" required>
+          </div>
+          <div class="field field-full">
+            <label for="bio">Pequena biografia *</label>
+            <textarea id="bio" name="bio" maxlength="1200" required></textarea>
+          </div>
+          <fieldset class="field field-full" style="border:0;padding:0;margin:0">
+            <legend class="field-label">Idiomas falados *</legend>
+            <div class="check-group" data-options="languages"></div>
+          </fieldset>
+          <fieldset class="field field-full" style="border:0;padding:0;margin:0">
+            <legend class="field-label">Regiões de atuação *</legend>
+            <div class="check-group" data-options="regions"></div>
+          </fieldset>
+          <fieldset class="field field-full" style="border:0;padding:0;margin:0">
+            <legend class="field-label">Especialidades</legend>
+            <div class="check-group" data-options="specialties"></div>
+          </fieldset>
+          <div class="field"><label for="instagram">Instagram</label><input id="instagram" name="instagram" type="url" placeholder="https://instagram.com/..."></div>
+          <div class="field"><label for="facebook">Facebook</label><input id="facebook" name="facebook" type="url"></div>
+          <div class="field"><label for="professional-email">E-mail profissional</label><input id="professional-email" name="email" type="email"></div>
+          <div class="field"><label for="website">Site</label><input id="website" name="site" type="url"></div>
+        </div>
+        <div class="form-actions">
+          <button id="registration-submit" class="button" type="submit">Enviar para verificação</button>
+          <button id="registration-signout" class="button button-ghost" type="button">Sair da conta</button>
+        </div>
+      </form>
+
+      <aside class="panel-card status-card">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Verificação humana</h2>
+        <ol class="helper-list">
+          <li>Você cria e envia o perfil.</li>
+          <li>O administrador confere os dados e o Cadastur.</li>
+          <li>Depois da aprovação, o perfil aparece para os visitantes.</li>
+        </ol>
+        <p><strong>Importante:</strong> alterar o Cadastur no futuro fará o perfil voltar para análise.</p>
+      </aside>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/guides-common.js"></script>
+  <script src="/js/guide-registration.js"></script>
+</body>
+</html>
