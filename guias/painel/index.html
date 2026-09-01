@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#173a2b">
+  <title>Painel do guia | Bento Pantanal</title>
+  <link rel="stylesheet" href="/css/guides.css">
+</head>
+<body class="account-page">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">🐆</span><span class="brand-text">BENTO PANTANAL</span></a>
+      <div class="nav-links"><a href="/guias/">Ver guias</a><button id="dashboard-signout" class="button button-small button-light" type="button">Sair</button></div>
+    </nav>
+  </header>
+
+  <main class="account-main">
+    <header class="account-heading">
+      <span class="eyebrow">Área do guia</span>
+      <h1>Seu perfil profissional.</h1>
+      <p>Atualize seus dados, contatos e fotografias. O status e a verificação são controlados pela administração.</p>
+    </header>
+    <div id="dashboard-loading" class="panel-card">Carregando seu perfil...</div>
+    <section id="dashboard-area" class="account-grid hidden">
+      <div class="profile-stack">
+        <form id="guide-dashboard-form" class="panel-card">
+          <h2>Informações do perfil</h2>
+          <div id="dashboard-message" class="message" role="status"></div>
+          <div class="form-grid">
+            <div class="field"><label for="full-name">Nome completo *</label><input id="full-name" name="nome" maxlength="120" required></div>
+            <div class="field"><label for="professional-name">Nome profissional</label><input id="professional-name" name="nome_profissional" maxlength="100"></div>
+            <div class="field"><label for="profile-image">Nova foto de perfil</label><input id="profile-image" type="file" accept="image/*"></div>
+            <div class="field"><label for="cover-image">Nova foto de capa</label><input id="cover-image" type="file" accept="image/*"></div>
+            <div class="field"><label for="cadastur">Número do Cadastur *</label><input id="cadastur" name="cadastur_numero" maxlength="40" required><small>Se mudar, o perfil volta para análise.</small></div>
+            <div class="field"><label for="whatsapp">WhatsApp com DDD *</label><input id="whatsapp" name="whatsapp" type="tel" required></div>
+            <div class="field field-full"><label for="bio">Biografia *</label><textarea id="bio" name="bio" maxlength="1200" required></textarea></div>
+            <fieldset class="field field-full" style="border:0;padding:0;margin:0"><legend class="field-label">Idiomas falados *</legend><div class="check-group" data-options="languages"></div></fieldset>
+            <fieldset class="field field-full" style="border:0;padding:0;margin:0"><legend class="field-label">Regiões de atuação *</legend><div class="check-group" data-options="regions"></div></fieldset>
+            <fieldset class="field field-full" style="border:0;padding:0;margin:0"><legend class="field-label">Especialidades</legend><div class="check-group" data-options="specialties"></div></fieldset>
+            <div class="field"><label for="instagram">Instagram</label><input id="instagram" name="instagram" type="url"></div>
+            <div class="field"><label for="facebook">Facebook</label><input id="facebook" name="facebook" type="url"></div>
+            <div class="field"><label for="professional-email">E-mail profissional</label><input id="professional-email" name="email" type="email"></div>
+            <div class="field"><label for="website">Site</label><input id="website" name="site" type="url"></div>
+          </div>
+          <div class="form-actions"><button id="dashboard-save" class="button" type="submit">Salvar alterações</button></div>
+        </form>
+
+        <section class="panel-card" aria-labelledby="gallery-title">
+          <h2 id="gallery-title">Galeria de fotos</h2>
+          <p>Adicione imagens que mostrem seu trabalho. Limite de 8 MB por arquivo.</p>
+          <div id="gallery-message" class="message" role="status"></div>
+          <form id="gallery-upload-form" class="form-grid">
+            <div class="field"><label for="gallery-files">Selecionar fotos</label><input id="gallery-files" type="file" accept="image/*" multiple required></div>
+            <div class="field"><label for="gallery-caption">Legenda opcional</label><input id="gallery-caption" maxlength="160"></div>
+            <div class="form-actions field-full"><button id="gallery-upload" class="button button-outline" type="submit">Adicionar à galeria</button></div>
+          </form>
+          <div id="gallery-manager" class="gallery-manager"></div>
+        </section>
+      </div>
+
+      <aside class="panel-card status-card">
+        <span class="eyebrow">Situação do perfil</span>
+        <div id="dashboard-status"></div>
+        <p id="dashboard-status-copy" style="margin-top:16px"></p>
+        <a id="dashboard-preview" class="button full-width hidden" href="#">Ver perfil público</a>
+        <hr style="margin:22px 0;border:0;border-top:1px solid var(--line)">
+        <p><strong>Cadastur:</strong><br><span id="dashboard-cadastur"></span></p>
+        <p><strong>Última atualização:</strong><br><span id="dashboard-updated"></span></p>
+      </aside>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/guides-common.js"></script>
+  <script src="/js/guide-dashboard.js"></script>
+</body>
+</html>
