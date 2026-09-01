@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Perfil de guia de turismo verificado no Pantanal.">
+  <meta property="og:title" content="Guia verificado | Bento Pantanal">
+  <meta property="og:description" content="Conheça este profissional verificado da Rede de Guias Bento Pantanal.">
+  <meta property="og:type" content="profile">
+  <meta property="og:image" content="https://pantanal.bento.host/assets/og-guias.jpg">
+  <meta name="theme-color" content="#173a2b">
+  <title>Guia verificado | Bento Pantanal</title>
+  <link id="canonical-link" rel="canonical" href="https://pantanal.bento.host/guias/">
+  <link rel="stylesheet" href="/css/guides.css">
+</head>
+<body>
+  <a class="skip-link" href="#profile-content">Ir para o perfil</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">🐆</span><span class="brand-text">BENTO PANTANAL</span></a>
+      <div class="nav-links"><a href="/explorer.html">Explorer</a><a href="/guias/">Todos os guias</a><a class="nav-cta" href="/guias/cadastro/">Sou guia</a></div>
+    </nav>
+  </header>
+  <main id="profile-content">
+    <div id="profile-loading" class="container" style="padding:70px 0"><div class="skeleton" style="height:520px"></div></div>
+    <div id="profile-error" class="container hidden" style="padding:70px 0"><div class="empty-state"><strong>Guia não encontrado.</strong>Este perfil pode estar em análise ou indisponível. <a class="text-link" href="/guias/">Ver guias aprovados</a>.</div></div>
+    <article id="profile-view" class="hidden">
+      <div class="profile-cover" id="profile-cover"></div>
+      <div class="container profile-identity">
+        <section class="identity-card">
+          <div class="avatar profile-avatar" id="profile-avatar"></div>
+          <div>
+            <span class="verified-badge">✓ Guia de Turismo Verificado</span>
+            <h1 id="profile-name"></h1>
+            <p id="profile-regions"></p>
+          </div>
+          <div class="identity-actions">
+            <a id="profile-whatsapp-top" class="button button-primary" href="#" target="_blank" rel="noopener">Falar com o guia</a>
+            <button id="share-profile" class="button button-ghost" type="button">Compartilhar perfil</button>
+          </div>
+        </section>
+      </div>
+      <div class="container profile-layout">
+        <div class="profile-stack">
+          <section class="content-card"><span class="eyebrow">Sobre</span><h2>Experiência no Pantanal</h2><p id="profile-bio"></p></section>
+          <section class="content-card"><h2>Idiomas</h2><div id="profile-languages" class="chips"></div></section>
+          <section class="content-card"><h2>Especialidades</h2><div id="profile-specialties" class="chips"></div></section>
+          <section id="profile-gallery-card" class="content-card hidden"><h2>Galeria</h2><div id="profile-gallery" class="gallery-grid"></div></section>
+        </div>
+        <aside class="content-card contact-card">
+          <span class="verified-badge">✓ Cadastur verificado</span>
+          <h2 style="margin-top:18px">Entre em contato</h2>
+          <div id="profile-contacts" class="contact-list"></div>
+          <p class="contact-note">O contato é direto com o profissional. O Bento Pantanal não cobra comissão.</p>
+        </aside>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer"><p>Bento Pantanal — Guias de quem conhece o chão que pisa.</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/guides-common.js"></script>
+  <script src="/js/guide-profile.js"></script>
+</body>
+</html>
