@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#173a2b">
+  <title>Acesso do guia | Bento Pantanal</title>
+  <link rel="stylesheet" href="/css/guides.css">
+</head>
+<body class="account-page">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">🐆</span><span class="brand-text">BENTO PANTANAL</span></a>
+      <div class="nav-links"><a href="/guias/">Ver guias</a><a class="nav-cta" href="/guias/cadastro/">Criar perfil</a></div>
+    </nav>
+  </header>
+
+  <main class="auth-shell">
+    <div class="brand-lockup">
+      <span class="eyebrow">Área profissional</span>
+      <h1>Acesso do guia</h1>
+      <p>Entre para editar seu perfil e acompanhar a verificação.</p>
+    </div>
+    <section class="panel-card">
+      <div class="auth-tabs" role="tablist" aria-label="Acesso">
+        <button class="auth-tab is-active" type="button" data-auth-mode="login">Entrar</button>
+        <button class="auth-tab" type="button" data-auth-mode="signup">Criar conta</button>
+      </div>
+      <div id="auth-message" class="message" role="status"></div>
+      <form id="auth-form">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field" style="margin-top:14px">
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" minlength="6" autocomplete="current-password" required>
+        </div>
+        <div class="form-actions">
+          <button id="auth-submit" class="button full-width" type="submit">Entrar</button>
+        </div>
+      </form>
+      <button id="forgot-password" class="button button-ghost full-width" type="button">Esqueci minha senha</button>
+      <div class="separator">ou</div>
+      <button id="google-login" class="button button-light full-width" type="button" style="border:1px solid var(--line)">Continuar com Google</button>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"></script>
+  <script src="/js/supabase-config.js"></script>
+  <script src="/js/guides-common.js"></script>
+  <script src="/js/guide-auth.js"></script>
+</body>
+</html>
