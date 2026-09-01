@@ -432,6 +432,24 @@ input:focus, select:focus, textarea:focus { border-color: var(--leaf); box-shado
 
 .contact-note { margin-top: 16px; color: var(--muted); font-size: 0.82rem; text-align: center; }
 
+.vip-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.vip-actions .verified-badge { width: max-content; margin-bottom: 4px; }
+
+.sightings-button {
+  color: #6a5511;
+  background: #f3e8b9;
+  border: 1px dashed #c9a227;
+}
+
+.sightings-button:disabled { opacity: 1; color: #6a5511; cursor: default; }
+
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
 .gallery-item { position: relative; min-height: 170px; overflow: hidden; background: #e7eae5; border-radius: 14px; }
