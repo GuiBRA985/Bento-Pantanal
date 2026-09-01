@@ -10,39 +10,6 @@
   const specialty = document.querySelector("#specialty-filter");
   let guides = [];
 
-  const VIP_GUIDES = [
-    {
-      id: "vip-tchaco-pantaneiro",
-      slug: "tchaco-pantaneiro",
-      nome: "Tchaco Pantaneiro",
-      nome_profissional: "Tchaco Pantaneiro",
-      bio: "Página profissional exclusiva na Rede de Guias Bento Pantanal.",
-      foto_perfil: "",
-      foto_capa: "",
-      regioes: [],
-      idiomas: [],
-      especialidades: [],
-      cadastur_verificado: true,
-      isVip: true,
-      externalUrl: "https://www.pantanalwild4you.com.br/"
-    },
-    {
-      id: "vip-jhimy",
-      slug: "jhimy",
-      nome: "Jhimy",
-      nome_profissional: "Jhimy",
-      bio: "Página profissional exclusiva na Rede de Guias Bento Pantanal.",
-      foto_perfil: "",
-      foto_capa: "",
-      regioes: [],
-      idiomas: [],
-      especialidades: [],
-      cadastur_verificado: true,
-      isVip: true,
-      externalUrl: "https://www.pantanaltourexpress.com.br/"
-    }
-  ];
-
   function optionValues(field) {
     return [...new Set(guides.flatMap((guide) => P.asArray(guide[field])))].sort((a, b) => a.localeCompare(b, "pt-BR"));
   }
@@ -65,21 +32,21 @@
     const cover = P.safeUrl(guide.foto_capa);
     const photo = P.safeUrl(guide.foto_perfil);
     const regions = P.asArray(guide.regioes);
-    const profileUrl = guide.isVip ? P.safeUrl(guide.externalUrl) : P.guidePath(guide.slug);
-    const target = guide.isVip ? ' target="_blank" rel="noopener"' : "";
+    const isVip = Boolean(guide.vip);
+    const profileUrl = P.guidePath(guide.slug);
     return `
       <article class="guide-card">
         <div class="guide-card-cover">${cover ? `<img src="${P.escapeHTML(cover)}" alt="" loading="lazy">` : ""}</div>
         <div class="guide-card-body">
           <div class="avatar">${photo ? `<img src="${P.escapeHTML(photo)}" alt="Foto de ${P.escapeHTML(name)}" loading="lazy">` : P.escapeHTML(P.initials(name))}</div>
-          <span class="verified-badge${guide.isVip ? " vip-badge" : ""}">${guide.isVip ? "★ Guia VIP" : "✓ Guia verificado"}</span>
+          <span class="verified-badge${isVip ? " vip-badge" : ""}">${isVip ? "★ Guia VIP" : "✓ Guia verificado"}</span>
           <h3>${P.escapeHTML(name)}</h3>
-          <div class="guide-region">${guide.isVip ? "Página profissional exclusiva" : `⌖ ${P.escapeHTML(regions.slice(0, 2).join(" · ") || "Pantanal")}`}</div>
-          <div class="chips">${guide.isVip && !P.asArray(guide.idiomas).length ? '<span class="chip chip-gold">Perfil exclusivo</span>' : chipList(guide.idiomas, 3, true)}</div>
+          <div class="guide-region">${isVip ? "Página profissional exclusiva" : `⌖ ${P.escapeHTML(regions.slice(0, 2).join(" · ") || "Pantanal")}`}</div>
+          <div class="chips">${isVip && !P.asArray(guide.idiomas).length ? '<span class="chip chip-gold">Perfil exclusivo</span>' : chipList(guide.idiomas, 3, true)}</div>
           <div class="chips" style="margin-top:8px">${chipList(guide.especialidades, 3)}</div>
           <div class="guide-card-footer">
-            <small>${guide.isVip ? "Página VIP ★" : "Cadastur verificado ✓"}</small>
-            <a class="button button-small" href="${P.escapeHTML(profileUrl)}"${target} aria-label="Ver perfil de ${P.escapeHTML(name)}">Ver perfil</a>
+            <small>${isVip ? "Página VIP ★" : "Cadastur verificado ✓"}</small>
+            <a class="button button-small" href="${P.escapeHTML(profileUrl)}" aria-label="Ver perfil de ${P.escapeHTML(name)}">Ver perfil</a>
           </div>
         </div>
       </article>`;
@@ -107,9 +74,11 @@
   try {
     const { data, error } = await P.db.from("public_guide_profiles").select("*").order("nome", { ascending: true });
     if (error) throw error;
-    const vipNames = new Set(["tchaco pantaneiro", "chaco pantaneiro", "jhimy", "jhymi"]);
-    const regularGuides = (data || []).filter((guide) => !vipNames.has(P.displayName(guide).trim().toLocaleLowerCase("pt-BR")));
-    guides = [...VIP_GUIDES, ...regularGuides];
+    guides = [...(data || [])].sort((a, b) => {
+      if (Boolean(a.vip) !== Boolean(b.vip)) return a.vip ? -1 : 1;
+      if (a.vip && b.vip) return (Number(a.vip_position) || 999) - (Number(b.vip_position) || 999);
+      return P.displayName(a).localeCompare(P.displayName(b), "pt-BR");
+    });
     fillSelect(language, optionValues("idiomas"));
     fillSelect(region, optionValues("regioes"));
     fillSelect(specialty, optionValues("especialidades"));

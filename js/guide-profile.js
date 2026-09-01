@@ -16,10 +16,6 @@
     return true;
   }
 
-  function renderChips(target, values, gold = false) {
-    target.innerHTML = P.asArray(values).map((value) => `<span class="chip${gold ? " chip-gold" : ""}">${P.escapeHTML(value)}</span>`).join("") || '<span class="chip">Não informado</span>';
-  }
-
   function socialUrl(value, base) {
     if (!value) return "";
     const direct = P.safeUrl(value);
@@ -29,7 +25,7 @@
   }
 
   function addContact(container, label, href, primary = false) {
-    if (!href) return;
+    if (!href) return false;
     const link = document.createElement("a");
     link.className = `button ${primary ? "button-primary" : "button-outline"}`;
     link.href = href;
@@ -39,6 +35,7 @@
       link.rel = "noopener";
     }
     container.append(link);
+    return true;
   }
 
   function updateMeta(guide, name) {
@@ -69,11 +66,15 @@
     document.querySelector("#profile-regions").textContent = P.asArray(guide.regioes).join(" · ") || "Pantanal Mato-Grossense";
     document.querySelector("#profile-bio").textContent = guide.bio || "Profissional local do Pantanal.";
 
+    const profileBadge = document.querySelector("#profile-badge");
+    if (guide.vip) {
+      profileBadge.textContent = "★ Guia VIP";
+      profileBadge.classList.add("vip-badge");
+    }
+
     const avatar = document.querySelector("#profile-avatar");
     if (!addImage(avatar, guide.foto_perfil, `Foto de ${name}`)) avatar.textContent = P.initials(name);
     addImage(document.querySelector("#profile-cover"), guide.foto_capa, `Paisagem de capa de ${name}`);
-    renderChips(document.querySelector("#profile-languages"), guide.idiomas, true);
-    renderChips(document.querySelector("#profile-specialties"), guide.especialidades);
 
     const phone = P.normalizePhone(guide.whatsapp);
     const whatsapp = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(`Olá, ${name}! Encontrei seu perfil na Rede de Guias Bento Pantanal.`)}` : "";
@@ -83,18 +84,21 @@
     const contacts = document.querySelector("#profile-contacts");
     addContact(contacts, "Falar pelo WhatsApp", whatsapp, true);
     addContact(contacts, "Instagram", socialUrl(guide.instagram, "https://instagram.com/"));
-    addContact(contacts, "Facebook", socialUrl(guide.facebook, "https://facebook.com/"));
-    addContact(contacts, "Enviar e-mail", guide.email ? `mailto:${guide.email}` : "");
-    addContact(contacts, "Visitar site", P.safeUrl(guide.site));
+    if (!contacts.children.length) {
+      const notice = document.createElement("p");
+      notice.textContent = "Os contatos deste guia serão adicionados em breve.";
+      contacts.append(notice);
+    }
 
-    const { data: gallery, error: galleryError } = await P.db.from("guide_gallery").select("id,image_url,caption,position").eq("guide_id", guide.id).order("position", { ascending: true }).order("created_at", { ascending: true });
-    if (!galleryError && gallery?.length) {
-      const galleryElement = document.querySelector("#profile-gallery");
-      galleryElement.innerHTML = gallery.map((item) => {
-        const image = P.safeUrl(item.image_url);
-        return image ? `<figure class="gallery-item"><img src="${P.escapeHTML(image)}" alt="${P.escapeHTML(item.caption || `Trabalho de ${name}`)}" loading="lazy">${item.caption ? `<figcaption>${P.escapeHTML(item.caption)}</figcaption>` : ""}</figure>` : "";
-      }).join("");
-      document.querySelector("#profile-gallery-card").classList.remove("hidden");
+    if (guide.vip) {
+      const vipActions = document.querySelector("#profile-vip-actions");
+      const personalDomain = document.querySelector("#profile-personal-domain");
+      const domain = P.safeUrl(guide.personal_domain || guide.site);
+      if (domain) personalDomain.href = domain; else personalDomain.classList.add("hidden");
+      const expedition = document.querySelector("#profile-expedition");
+      expedition.href = `/?guia=${encodeURIComponent(guide.slug)}#expedicao`;
+      expedition.classList.toggle("hidden", !guide.expedition_leader);
+      vipActions.classList.remove("hidden");
     }
 
     document.querySelector("#share-profile").addEventListener("click", async () => {

@@ -83,7 +83,7 @@
     const save = document.querySelector("#dashboard-save");
     const languages = P.checkedValues(form, "languages");
     const regions = P.checkedValues(form, "regions");
-    if (!languages.length || !regions.length) return P.setMessage("#dashboard-message", "Escolha ao menos um idioma e uma região.", "error");
+    if (!guide.vip && (!languages.length || !regions.length)) return P.setMessage("#dashboard-message", "Escolha ao menos um idioma e uma região.", "error");
     save.disabled = true;
     P.setMessage("#dashboard-message", "Salvando alterações...");
     try {
