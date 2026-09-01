@@ -48,10 +48,16 @@
         <input id="dialog-id" type="hidden">
         <div class="field"><label for="dialog-full-name">Nome completo</label><input id="dialog-full-name" required></div>
         <div class="field"><label for="dialog-professional-name">Nome profissional</label><input id="dialog-professional-name"></div>
-        <div class="field"><label for="dialog-cadastur">Cadastur informado</label><input id="dialog-cadastur" required></div>
-        <div class="field"><label for="dialog-whatsapp">WhatsApp</label><input id="dialog-whatsapp" required></div>
+        <div class="field"><label for="dialog-profile-image">Nova foto de perfil</label><input id="dialog-profile-image" type="file" accept="image/*"></div>
+        <div class="field"><label for="dialog-cover-image">Nova foto de capa</label><input id="dialog-cover-image" type="file" accept="image/*"></div>
+        <div class="field"><label for="dialog-cadastur">Cadastur informado</label><input id="dialog-cadastur"></div>
+        <div class="field"><label for="dialog-whatsapp">WhatsApp</label><input id="dialog-whatsapp"></div>
         <div class="field"><label for="dialog-instagram">Instagram</label><input id="dialog-instagram" type="url"></div>
         <div class="field"><label for="dialog-email">E-mail profissional</label><input id="dialog-email" type="email"></div>
+        <div class="field"><label for="dialog-personal-domain">Domínio pessoal</label><input id="dialog-personal-domain" type="url" placeholder="https://..."></div>
+        <div class="field"><label for="dialog-login-email">Vincular conta de acesso</label><input id="dialog-login-email" type="email" placeholder="E-mail usado pelo guia no login"><small>O guia precisa criar a conta antes.</small></div>
+        <label class="check-option"><input id="dialog-vip" type="checkbox"><span>Guia VIP</span></label>
+        <label class="check-option"><input id="dialog-expedition-leader" type="checkbox"><span>Pode liderar expedições</span></label>
         <div class="field field-full"><label for="dialog-bio">Biografia</label><textarea id="dialog-bio"></textarea></div>
         <div class="field field-full"><label>Idiomas, regiões e especialidades</label><p id="dialog-tags"></p></div>
         <div class="field field-full"><label>Situação</label><div id="dialog-status"></div><small id="dialog-created"></small></div>
