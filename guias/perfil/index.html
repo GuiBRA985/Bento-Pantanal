@@ -30,7 +30,7 @@
         <section class="identity-card">
           <div class="avatar profile-avatar" id="profile-avatar"></div>
           <div>
-            <span class="verified-badge">✓ Guia de Turismo Verificado</span>
+            <span id="profile-badge" class="verified-badge">✓ Guia de Turismo Verificado</span>
             <h1 id="profile-name"></h1>
             <p id="profile-regions"></p>
           </div>
@@ -42,15 +42,18 @@
       </div>
       <div class="container profile-layout">
         <div class="profile-stack">
-          <section class="content-card"><span class="eyebrow">Sobre</span><h2>Experiência no Pantanal</h2><p id="profile-bio"></p></section>
-          <section class="content-card"><h2>Idiomas</h2><div id="profile-languages" class="chips"></div></section>
-          <section class="content-card"><h2>Especialidades</h2><div id="profile-specialties" class="chips"></div></section>
-          <section id="profile-gallery-card" class="content-card hidden"><h2>Galeria</h2><div id="profile-gallery" class="gallery-grid"></div></section>
+          <section class="content-card"><span class="eyebrow">Sobre</span><h2>Guia no Pantanal</h2><p id="profile-bio"></p></section>
         </div>
         <aside class="content-card contact-card">
           <span class="verified-badge">✓ Cadastur verificado</span>
           <h2 style="margin-top:18px">Entre em contato</h2>
           <div id="profile-contacts" class="contact-list"></div>
+          <div id="profile-vip-actions" class="vip-actions hidden">
+            <span class="verified-badge vip-badge">★ Perfil VIP</span>
+            <a id="profile-personal-domain" class="button button-outline" href="#" target="_blank" rel="noopener">Abrir site pessoal</a>
+            <a id="profile-expedition" class="button button-primary" href="#">Escolher para liderar expedição</a>
+            <button class="button sightings-button" type="button" disabled>Avistamentos · em breve</button>
+          </div>
           <p class="contact-note">O contato é direto com o profissional. O Bento Pantanal não cobra comissão.</p>
         </aside>
       </div>
